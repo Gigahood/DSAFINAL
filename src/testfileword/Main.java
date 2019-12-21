@@ -13,15 +13,17 @@ public class Main {
 
     public static void main(String[] args) {
         //start();
-//        Database db = new Database();
-//        db.loadData();
+        Database db = new Database();
+        db.loadData();
+        
+       
 //        StudentIDHash as = new StudentIDHash();
 //        as.start();
         //test();
 //        WriteFile wf = new WriteFile();
 //        wf.start();
         //testForHash();
-        testHash2();
+       // testHash2();
     }
 
     private static void testHash2() {
@@ -31,6 +33,10 @@ public class Main {
         hs.add(3, "3");
         hs.add(2, "2");
         hs.add(2, "5");
+        
+        for (int i = 0; i < 20; i++) {
+            hs.add(i, (i + ""));
+        }
         
         
         System.out.println(hs.printAll());

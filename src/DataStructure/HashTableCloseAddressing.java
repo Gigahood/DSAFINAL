@@ -42,7 +42,8 @@ public class HashTableCloseAddressing<K, V> implements Map<K, V> {
         if (isFull()) {
             rehash();
         }
-
+        
+        
         Node newNode = new Node(key, value);
         Node currentNode = bucket[index];
 
@@ -55,7 +56,7 @@ public class HashTableCloseAddressing<K, V> implements Map<K, V> {
             Node previousNode = bucket[index].previous;
             // tranverse through the bucket
             while (currentNode != null) {
-                
+
                 // check if the currentNode key same with the given key
                 // if same
                 // replace the old value with new value
@@ -66,11 +67,12 @@ public class HashTableCloseAddressing<K, V> implements Map<K, V> {
                     currentNode.value = value;
                     return returnValue;
                 }
-                
+
                 // not the same key, continue to advance
+                previousNode = currentNode;
                 currentNode = currentNode.next;
             }
-            
+
             // no key found, link the new node to the bucket
             previousNode.next = newNode;
             currentNode = newNode;
@@ -122,7 +124,7 @@ public class HashTableCloseAddressing<K, V> implements Map<K, V> {
 
     @Override
     public boolean isFull() {
-        return this.size / this.bucket.length < this.loadFactor;
+        return (this.size / this.bucket.length) > this.loadFactor;
     }
 
     @Override
@@ -229,9 +231,25 @@ public class HashTableCloseAddressing<K, V> implements Map<K, V> {
         return index;
 
     }
-    
+
     private void rehash() {
-        
+        Node<K, V>[] oldBucket = this.bucket;
+        int oldSize = size;
+        bucket = new Node[getNextPrime(oldSize * 2)];
+        size = 0;
+        // put in value inside the new bucket
+
+        for (int i = 0; i < oldSize; i++) {
+            Node currentNode = oldBucket[i];
+            if (currentNode != null) {
+
+                while (currentNode != null) {
+                    add((K) currentNode.key, (V) currentNode.value);
+                    currentNode = currentNode.next;
+                }
+            }
+        }
+
     }
 
     //------------------------------------------------------------------------------
@@ -239,8 +257,8 @@ public class HashTableCloseAddressing<K, V> implements Map<K, V> {
 
         private K key;
         private V value;
-        private Node next;
-        private Node previous;
+        private Node<K, V> next;
+        private Node<K, V> previous;
 
         public Node(K key, V value) {
             this.key = key;
