@@ -25,14 +25,15 @@ public class Database {
 //        System.out.println(studentArrayList.size());
 //        load150StudentData();
 //        System.out.println(studentArrayList.size());
-//        load200dStudentData();
-//        System.out.println(studentArrayList.size());
+        load200dStudentData();
+        System.out.println(studentArrayList.size());
 //        load1000StudentData();
 //        System.out.println(studentArrayList.size());
 //        load10000StudentData();
 //        System.out.println(studentArrayList.size());
-        load100000StudentData();
-        System.out.println(studentArrayList.size());
+//        load100000StudentData();
+//        System.out.println(studentArrayList.size());
+        
 //        load200000dStudentData();
 //        System.out.println(studentArrayList.size());
 //        load100000sStudentData();

@@ -3,6 +3,7 @@ package testfileword;
 import Constant.ConsoleColors;
 import DataClass.Student;
 import java.util.Scanner;
+import testfileword.Yien.Duplicate;
 import testfileword.YongBoon.Indexing;
 import testfileword.YongBoon.StudentIDHash;
 
@@ -103,6 +104,9 @@ public class Main {
                     index.start();
                     break;
                 case "2":
+                    Duplicate set = new Duplicate();
+                    set.printList();
+                    Main.scan.nextLine();
                     break;
                 case "3":
                     break;

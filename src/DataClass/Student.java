@@ -23,7 +23,14 @@ public class Student {
         this.cgppa = cgppa;
         this.password = password;
     }
-
+    
+    public Student(String studetnID, String firstName, String lastName, String ic) {
+        this.studentID = studentID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.ic = ic;
+    }
+    
     public String getPassword() {
         return password;
     }
