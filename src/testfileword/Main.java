@@ -11,7 +11,7 @@ public class Main {
     public static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        start();
+        //start();
 //        Database db = new Database();
 //        db.loadData();
 //        StudentIDHash as = new StudentIDHash();
@@ -19,7 +19,7 @@ public class Main {
         //test();
 //        WriteFile wf = new WriteFile();
 //        wf.start();
-        //testForHash();
+        testForHash();
     }
 
     private static void test() {

@@ -54,10 +54,10 @@ public interface Map<K, V> {
     Description   : Check whether the map contain the given key
     Precondition  : The map is not empty
     Postcondition : None
-    Return        : the index of the key if the key exist
-                    -1 if the key not exist
+    Return        : Return true if the map contain the key
+                    false if it does not contain the key
     */
-    int containKey (K key);
+    boolean containKey (K key);
     /*
     Description   : Check whether the map is close to full(is it more than the load factor given)
     Precondition  : None

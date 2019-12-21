@@ -67,9 +67,9 @@ public class HashTableLinear<K, V> implements Map<K, V> {
             //System.out.println("1");
         } 
             //System.out.println(value);
-            if (containKey(key) >= 0) {
+            if (containKey(key)) {
                 //System.out.println("1");
-                index = containKey(key);
+                index = locateKey(key);
                 oldValue = hashMap[index].value;
                 hashMap[index].value = value;
             } else {
@@ -90,7 +90,7 @@ public class HashTableLinear<K, V> implements Map<K, V> {
 
     @Override
     public boolean remove(K key) {
-        int index = containKey(key);
+        int index = locateKey(key);
 
         if (isEmpty() || index < 0) {
             return false;
@@ -113,8 +113,8 @@ public class HashTableLinear<K, V> implements Map<K, V> {
     public V getValue(K key) {
         int index;
 
-        if (!isEmpty() && containKey(key) >= 0) {
-            index = containKey(key);
+        if (!isEmpty() && containKey(key)) {
+            index = locateKey(key);
             return hashMap[index].value;
         }
         return null;
@@ -138,8 +138,8 @@ public class HashTableLinear<K, V> implements Map<K, V> {
     3. Go to MapIndex, check if the key same as given key or not, if yes return
         the MapIndex, else return -1
      */
-    @Override
-    public int containKey(K key) {
+    
+    public int locateKey(K key) {
         int hashIndex = getHashIndex(key);
         
         //System.out.println(hashIndex);
@@ -219,6 +219,11 @@ public class HashTableLinear<K, V> implements Map<K, V> {
 
     private int solveCollision(int index) {
         return (index + 1) % hashMap.length;
+    }
+
+    @Override
+    public boolean containKey(K key) {
+        return locateKey(key) >= 0;
     }
 
     private class Entry<K, V> {
@@ -339,8 +344,8 @@ public class HashTableLinear<K, V> implements Map<K, V> {
             return "removed";
         }
 
-        if (containKey(hashMap[index].getKey()) >= 0) {
-            int x = containKey(hashMap[index].getKey());
+        if (containKey(hashMap[index].getKey())) {
+            int x = locateKey(hashMap[index].getKey());
             return x + "";
         } else {
             int x = (getMapIndex(getHashIndex(hashMap[index].getKey())));

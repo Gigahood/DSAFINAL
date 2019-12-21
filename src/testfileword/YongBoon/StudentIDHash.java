@@ -15,7 +15,7 @@ public class StudentIDHash {
     public void start() {
         HashTableLinear<String, Student> studentHash = new HashTableLinear<>();
         long startTime = System.nanoTime();
-        String file = "Student100000.txt";
+        String file = "Student100000s.txt";
         
         
         readFile(studentHash, file);
