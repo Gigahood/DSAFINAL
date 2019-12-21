@@ -26,7 +26,8 @@ public class HashTableCloseAddressing<K, V> implements Map<K, V> {
 
     public HashTableCloseAddressing(int size) {
         this.size = 0;
-        this.bucket = new Node[getNextPrime(size)];
+        //this.bucket = new Node[getNextPrime(size)];
+        this.bucket = new Node[size];
         this.loadFactor = DEFAULT_LOAD_FACTOR;
     }
 
@@ -42,8 +43,7 @@ public class HashTableCloseAddressing<K, V> implements Map<K, V> {
         if (isFull()) {
             rehash();
         }
-        
-        
+
         Node newNode = new Node(key, value);
         Node currentNode = bucket[index];
 
@@ -83,12 +83,53 @@ public class HashTableCloseAddressing<K, V> implements Map<K, V> {
 
     @Override
     public boolean remove(K key) {
-        return true;
+        if (isEmpty()) {
+            return false;
+        }
+
+        int index = getHashIndex(key);
+
+        if (bucket[index] == null) {
+            return false;
+        } else {
+            Node currentNode = bucket[index];
+            Node previousNode = bucket[index].previous;
+
+            while (currentNode != null) {
+
+                // found the key, remove the link
+                if (currentNode.key.equals(key)) {
+
+                    // if is firstNode, no need to remove the previous of firstNode
+                    if (previousNode == null) {
+                        bucket[index] = currentNode.next;
+                        currentNode.next.previous = previousNode;
+                    } else if (currentNode.next == null) {
+                        previousNode.next = null;
+                    } else {
+                        previousNode.next = currentNode.next;
+                        currentNode.next.previous = previousNode;
+                    }
+                    // cut the link for removedNode
+                    currentNode.next = null;
+                    currentNode.previous = null;
+
+                    return true;
+                }
+
+                // not match the key, continue to tranverse the list
+                previousNode = currentNode;
+                currentNode = currentNode.next;
+            }
+        }
+
+        return false;
     }
 
     @Override
     public void removeAll() {
-
+        this.size = 0;
+        this.bucket = new Node[getNextPrime(bucket.length)];
     }
 
     @Override
@@ -163,18 +204,17 @@ public class HashTableCloseAddressing<K, V> implements Map<K, V> {
             currentNode = bucket[i];
 
             if (currentNode == null) {
-                str += "null\n";
+                str += "null";
             } else {
                 while (currentNode != null) {
                     str += currentNode.value;
-                    str += "\n";
+                    str += ", ";
 
                     currentNode = currentNode.next;
                 }
             }
-
+            str += "\n";
         }
-
         return str;
     }
 

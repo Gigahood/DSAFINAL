@@ -13,37 +13,34 @@ public class Main {
 
     public static void main(String[] args) {
         //start();
-        Database db = new Database();
-        db.loadData();
-        
-       
+//        Database db = new Database();
+//        db.loadData();
+
 //        StudentIDHash as = new StudentIDHash();
 //        as.start();
         //test();
 //        WriteFile wf = new WriteFile();
 //        wf.start();
         //testForHash();
-       // testHash2();
+        testHash2();
     }
 
     private static void testHash2() {
         HashTableCloseAddressing<Integer, String> hs = new HashTableCloseAddressing<>(10);
-        
+
         hs.add(1, "1");
         hs.add(3, "3");
         hs.add(2, "2");
         hs.add(2, "5");
+        hs.add(222, "55");
+        hs.add(22, "5555");
         
-        for (int i = 0; i < 20; i++) {
-            hs.add(i, (i + ""));
-        }
-        
-        
+        hs.remove(222);
+
         System.out.println(hs.printAll());
         System.out.println(hs.size());
-        
+
         //System.out.println(hs);
-        
     }
 
     private static void testForHash() {
