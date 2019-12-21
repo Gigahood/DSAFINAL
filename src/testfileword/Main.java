@@ -2,6 +2,7 @@ package testfileword;
 
 import Constant.ConsoleColors;
 import DataClass.Student;
+import DataStructure.HashTableCloseAddressing;
 import java.util.Scanner;
 import testfileword.YongBoon.Indexing;
 import testfileword.YongBoon.StudentIDHash;
@@ -19,11 +20,24 @@ public class Main {
         //test();
 //        WriteFile wf = new WriteFile();
 //        wf.start();
-        testForHash();
+        //testForHash();
+        testHash2();
     }
 
-    private static void test() {
-
+    private static void testHash2() {
+        HashTableCloseAddressing<Integer, String> hs = new HashTableCloseAddressing<>(10);
+        
+        hs.add(1, "1");
+        hs.add(3, "3");
+        hs.add(2, "2");
+        hs.add(2, "5");
+        
+        
+        System.out.println(hs.printAll());
+        System.out.println(hs.size());
+        
+        //System.out.println(hs);
+        
     }
 
     private static void testForHash() {

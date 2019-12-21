@@ -9,13 +9,14 @@ package DataStructure;
  *
  * @author User
  */
-public class HashTableCloseAddressing<K, V>  implements Map<K, V> {
+public class HashTableCloseAddressing<K, V> implements Map<K, V> {
+
     private int size;
-    private Node<K, V> [] bucket;
+    private Node<K, V>[] bucket;
     private double loadFactor;
-    
+
     private final int INITIAL_CAPACITY = 227;
-    private final double DEFAULT_LOAD_FACTOR = 0.85; 
+    private final double DEFAULT_LOAD_FACTOR = 0.85;
 
     public HashTableCloseAddressing() {
         this.size = 0;
@@ -24,31 +25,68 @@ public class HashTableCloseAddressing<K, V>  implements Map<K, V> {
     }
 
     public HashTableCloseAddressing(int size) {
-        this.size = size;
+        this.size = 0;
         this.bucket = new Node[getNextPrime(size)];
         this.loadFactor = DEFAULT_LOAD_FACTOR;
     }
-    
+
     public HashTableCloseAddressing(int size, double loadFactor) {
         this.size = 0;
         this.bucket = new Node[getNextPrime(size)];
         this.loadFactor = loadFactor;
     }
-    
-    
+
     @Override
     public V add(K key, V value) {
+        int index = getHashIndex(key);
+        if (isFull()) {
+            rehash();
+        }
+
+        Node newNode = new Node(key, value);
+        Node currentNode = bucket[index];
+
+        // if currentNode is null, mean it does not have item before, so just
+        // put the new item in
+        if (currentNode == null) {
+            bucket[index] = newNode;
+            size++;
+        } else {
+            Node previousNode = bucket[index].previous;
+            // tranverse through the bucket
+            while (currentNode != null) {
+                
+                // check if the currentNode key same with the given key
+                // if same
+                // replace the old value with new value
+                // return the old value
+                if (currentNode.key.equals(key)) {
+                    V returnValue;
+                    returnValue = (V) currentNode.value;
+                    currentNode.value = value;
+                    return returnValue;
+                }
+                
+                // not the same key, continue to advance
+                currentNode = currentNode.next;
+            }
+            
+            // no key found, link the new node to the bucket
+            previousNode.next = newNode;
+            currentNode = newNode;
+            size++;
+        }
         return null;
     }
 
     @Override
     public boolean remove(K key) {
-       return true;
+        return true;
     }
 
     @Override
     public void removeAll() {
-        
+
     }
 
     @Override
@@ -57,24 +95,26 @@ public class HashTableCloseAddressing<K, V>  implements Map<K, V> {
     }
 
     @Override
-    public int containKey(K key) {
-        return 1;
-    }
-    
-    public boolean containKeys(K key) {
+    public boolean containKey(K key) {
         if (isEmpty()) {
             return false;
         }
-        
-        int hashIndex = getHashIndex(key);
-        Node<K, V> currentNode = bucket[hashIndex];
 
-        if (currentNode != null && currentNode.key != key) {
-          currentNode = currentNode.next;
-        }
-        
-        if (currentNode == null) {
+        int index = getHashIndex(key);
+
+        // if the bucket is null, mean it never had item before
+        if (bucket[index] == null) {
             return false;
+        }
+
+        Node currentNode = bucket[index];
+
+        // moving to the next node inside the bucket
+        while (currentNode != null) {
+            if (currentNode.key.equals(key)) {
+                return true;
+            }
+            currentNode = currentNode.next;
         }
 
         return false;
@@ -82,54 +122,92 @@ public class HashTableCloseAddressing<K, V>  implements Map<K, V> {
 
     @Override
     public boolean isFull() {
-         return this.size / this.bucket.length < this.loadFactor;
+        return this.size / this.bucket.length < this.loadFactor;
     }
 
     @Override
     public boolean isEmpty() {
-       return this.size <= 0;
+        return this.size <= 0;
     }
 
     @Override
     public int size() {
         return this.size;
     }
-    
-    
-    
- //----------------------------------------------------------------------------
-    
+
+    @Override
+    public String toString() {
+        String str = "";
+        Node currentNode;
+
+        for (int i = 0; i < bucket.length; i++) {
+            currentNode = bucket[i];
+
+            while (currentNode != null) {
+                str += currentNode.value;
+                str += "\n";
+                currentNode = currentNode.next;
+            }
+        }
+
+        return str;
+    }
+
+    public String printAll() {
+        String str = "";
+        Node currentNode;
+
+        for (int i = 0; i < bucket.length; i++) {
+            currentNode = bucket[i];
+
+            if (currentNode == null) {
+                str += "null\n";
+            } else {
+                while (currentNode != null) {
+                    str += currentNode.value;
+                    str += "\n";
+
+                    currentNode = currentNode.next;
+                }
+            }
+
+        }
+
+        return str;
+    }
+
+//----------------------------------------------------------------------------
     private int getNextPrime(int size) {
         // if is even, will not be prime, make it become odd
         if (size % 2 == 0) {
             size++;
         }
-        
+
         // get next odd number if it is not prime number
         while (!isPrime(size)) {
             size += 2;
         }
-        
+
         return size;
     }
-    
+
     private boolean isPrime(int size) {
         int i;
-        
+
         // size 1,2,3 is prime number
         if (size == 1 || size == 2 || size == 0) {
             return true;
         }
-        
+
         // above 3, modulus by every number start from 3 
-        for (i = 3; i < size / 2 ; i++) {
+        for (i = 3; i < size / 2; i++) {
             if (size % i == 0) {
                 return false;
             }
         }
         return true;
     }
-    
+
     private int getHashIndex(K key) {
         int index;
 
@@ -142,24 +220,33 @@ public class HashTableCloseAddressing<K, V>  implements Map<K, V> {
             if (index == 0) {
                 index = 1;
             }
-            
+
             // this only occur when overflow
             if (index < 0) {
                 index = index + bucket.length;
             } // end if
         }
         return index;
+
     }
-   
- //------------------------------------------------------------------------------
-    private class Node <K, V> {
+    
+    private void rehash() {
+        
+    }
+
+    //------------------------------------------------------------------------------
+    private class Node<K, V> {
+
         private K key;
         private V value;
         private Node next;
+        private Node previous;
 
         public Node(K key, V value) {
             this.key = key;
             this.value = value;
+            this.next = null;
+            this.previous = null;
         }
 
         public K getKey() {
@@ -185,8 +272,7 @@ public class HashTableCloseAddressing<K, V>  implements Map<K, V> {
         public void setNext(Node next) {
             this.next = next;
         }
-        
-        
+
     }
-    
+
 }
