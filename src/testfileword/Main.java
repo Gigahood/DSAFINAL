@@ -18,7 +18,7 @@ public class Main {
 //        as.start();
         //test();
 //        WriteFile wf = new WriteFile();
-        //wf.start();
+//        wf.start();
         //testForHash();
     }
 
