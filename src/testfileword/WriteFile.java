@@ -28,15 +28,15 @@ public class WriteFile {
 //        addStudent20();
 //        addStudent150();
  //       addStudent200d();
-        addStudentListYiEn();
+  //      addStudentListYiEn();
 //        addStudent1000();
 //        addStudent10000();
 //        addStudent100000();
      //   addStudent100000s();
    //     addStudent200000d();
-////        addStudent1000000();
+      // addStudent1000000();
 //        writeToFile(list20, "Student20.txt");
-        writeToFile(listYiEn, "YiEnSpecial.txt");
+ //       writeToFile(listYiEn, "YiEnSpecial.txt");
 //        writeToFile(list150, "Student150.txt");
 //        writeToFile(list200d, "Student200duplicate.txt");
 //        writeToFile(list1000, "Student1000.txt");
@@ -44,7 +44,7 @@ public class WriteFile {
 ////         writeToFile(list100000, "Student100000.txt");
 //        writeToFile(list100000s, "Student100000s.txt");
 //        writeToFile(list200000d, "Student200000d.txt");
-//        writeToFile(list1000000, "Student1000000.txt");
+   //    writeToFile(list1000000, "Student1000000.txt");
 
     }
 

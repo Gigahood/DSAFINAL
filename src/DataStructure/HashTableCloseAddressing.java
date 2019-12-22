@@ -9,7 +9,7 @@ package DataStructure;
  *
  * @author User
  */
-public class HashTableCloseAddressing<K, V> implements Map<K, V> {
+public class HashTableCloseAddressing<K, V> implements Dictionary<K, V> {
 
     private int size;
     private Node<K, V>[] bucket;
@@ -82,28 +82,31 @@ public class HashTableCloseAddressing<K, V> implements Map<K, V> {
     }
 
     @Override
-    public boolean remove(K key) {
+    public V remove(K key) {
+        V removedValue = null;
+
         if (isEmpty()) {
-            return false;
+            return removedValue;
         }
 
         int index = getHashIndex(key);
 
         if (bucket[index] == null) {
-            return false;
+            return removedValue;
         } else {
             Node currentNode = bucket[index];
             Node previousNode = bucket[index].previous;
 
             while (currentNode != null) {
-
                 // found the key, remove the link
                 if (currentNode.key.equals(key)) {
-
+                    removedValue = (V) currentNode.getValue();
                     // if is firstNode, no need to remove the previous of firstNode
                     if (previousNode == null) {
                         bucket[index] = currentNode.next;
-                        currentNode.next.previous = previousNode;
+                        if (currentNode.next != null) {
+                            currentNode.next.previous = previousNode;
+                        }
                     } else if (currentNode.next == null) {
                         previousNode.next = null;
                     } else {
@@ -111,19 +114,22 @@ public class HashTableCloseAddressing<K, V> implements Map<K, V> {
                         currentNode.next.previous = previousNode;
                     }
                     // cut the link for removedNode
+
                     currentNode.next = null;
                     currentNode.previous = null;
 
-                    return true;
+                    size--;
+                    //return removedValue;
                 }
 
                 // not match the key, continue to tranverse the list
                 previousNode = currentNode;
                 currentNode = currentNode.next;
+
             }
         }
 
-        return false;
+        return removedValue;
     }
 
     @Override
@@ -134,6 +140,26 @@ public class HashTableCloseAddressing<K, V> implements Map<K, V> {
 
     @Override
     public V getValue(K key) {
+        if (isEmpty()) {
+            return null;
+        }
+
+        int index = getHashIndex(key);
+
+        if (bucket[index] == null) {
+            return null;
+        } else {
+            Node currentNode = bucket[index];
+            while (currentNode != null) {
+                // found the key, remove the link
+                if (currentNode.key.equals(key)) {
+                    return (V) currentNode.value;
+                }
+                // not match the key, continue to tranverse the list
+                currentNode = currentNode.next;
+            }
+        }
+
         return null;
     }
 

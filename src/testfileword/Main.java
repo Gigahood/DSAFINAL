@@ -19,10 +19,10 @@ public class Main {
 //        StudentIDHash as = new StudentIDHash();
 //        as.start();
         //test();
-//        WriteFile wf = new WriteFile();
-//        wf.start();
-        //testForHash();
-        testHash2();
+        WriteFile wf = new WriteFile();
+        wf.start();
+        testForHash();
+        //testHash2();
     }
 
     private static void testHash2() {
@@ -35,10 +35,10 @@ public class Main {
         hs.add(222, "55");
         hs.add(22, "5555");
         
-        hs.remove(222);
+        System.out.println(hs.getValue(222));
 
-        System.out.println(hs.printAll());
-        System.out.println(hs.size());
+//        System.out.println(hs.printAll());
+//        System.out.println(hs.size());
 
         //System.out.println(hs);
     }

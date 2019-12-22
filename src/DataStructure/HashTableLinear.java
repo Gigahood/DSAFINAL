@@ -3,9 +3,7 @@
 To-do
     1. Prime Number for size
     2. Decide whether make use of the isAvailable
-*/
-
-
+ */
 package DataStructure;
 
 import java.util.ArrayList;
@@ -15,7 +13,7 @@ import java.util.Collection;
  *
  * @author User
  */
-public class HashTableLinear<K, V> implements Map<K, V> {
+public class HashTableLinear<K, V> implements Dictionary<K, V> {
 
     private Entry<K, V>[] hashMap;
     private int size;
@@ -65,41 +63,42 @@ public class HashTableLinear<K, V> implements Map<K, V> {
             //System.out.println(size);
             rehash();
             //System.out.println("1");
-        } 
-            //System.out.println(value);
-            if (containKey(key)) {
-                //System.out.println("1");
-                index = locateKey(key);
-                oldValue = hashMap[index].value;
-                hashMap[index].value = value;
-            } else {
-                index = getHashIndex(key);
-                // getMapIndex will make sure to solve the collision
-                // the returned index will be either with the same key 
-                // or a new index based on resolved collision
-                index = getMapIndex(index);
-                hashMap[index] = new Entry(key, value);
-                //System.out.println(key);
-                size++;
-            }
-       
-        
+        }
+        //System.out.println(value);
+        if (containKey(key)) {
+            //System.out.println("1");
+            index = locateKey(key);
+            oldValue = hashMap[index].value;
+            hashMap[index].value = value;
+        } else {
+            index = getHashIndex(key);
+            // getMapIndex will make sure to solve the collision
+            // the returned index will be either with the same key 
+            // or a new index based on resolved collision
+            index = getMapIndex(index);
+            hashMap[index] = new Entry(key, value);
+            //System.out.println(key);
+            size++;
+        }
+
         //System.out.println("size = " + size);
         return oldValue;
     }
 
     @Override
-    public boolean remove(K key) {
+    public V remove(K key) {
         int index = locateKey(key);
-
+        V removedValue = null;
+        
         if (isEmpty() || index < 0) {
-            return false;
+            return removedValue;
         }
-
+        
+        removedValue = hashMap[index].getValue();
         hashMap[index].remove();
         size--;
 
-        return true;
+        return removedValue;
     }
 
     @Override
@@ -119,13 +118,13 @@ public class HashTableLinear<K, V> implements Map<K, V> {
         }
         return null;
     }
-    
+
     public Collection<K> getAllKeys() {
         Collection<K> keyset = new ArrayList<>();
-       int length = hashMap.length;
-        
+        int length = hashMap.length;
+
         for (int i = 0; i < length; i++) {
-            if (hashMap[i] != null &&  hashMap[i].getKey() != null) {
+            if (hashMap[i] != null && hashMap[i].getKey() != null) {
                 keyset.add(hashMap[i].getKey());
             }
         }
@@ -138,10 +137,9 @@ public class HashTableLinear<K, V> implements Map<K, V> {
     3. Go to MapIndex, check if the key same as given key or not, if yes return
         the MapIndex, else return -1
      */
-    
     public int locateKey(K key) {
         int hashIndex = getHashIndex(key);
-        
+
         //System.out.println(hashIndex);
         while (collision(hashIndex)) {
             if (!hashMap[hashIndex].key.equals(key)) {
@@ -179,7 +177,7 @@ public class HashTableLinear<K, V> implements Map<K, V> {
             if (index == 0) {
                 index = 1;
             }
-            
+
             if (index < 0) {
                 index = index + hashMap.length;
             } // end if
@@ -192,8 +190,8 @@ public class HashTableLinear<K, V> implements Map<K, V> {
     // following is to solve collision using linear probing
     // just move the next index if there is element 
     private int getMapIndex(int index) {
-        
-        while (collision(index)) {   
+
+        while (collision(index)) {
             index = solveCollision(index);
         }
         return index;
@@ -209,7 +207,7 @@ public class HashTableLinear<K, V> implements Map<K, V> {
         //Entry<K,V> currentEntry;
 
         for (int i = 0; i < old; i++) {
-            
+
             if (oldMap[i] != null && !oldMap[i].available) {
                 //System.out.println(oldMap[i].getValue());
                 add(oldMap[i].getKey(), oldMap[i].getValue());
@@ -271,8 +269,8 @@ public class HashTableLinear<K, V> implements Map<K, V> {
     }
 
     private boolean collision(int hashIndex) {
-       //System.out.println(hashIndex);
-       return (hashMap[hashIndex] != null && !hashMap[hashIndex].isAvailable());
+        //System.out.println(hashIndex);
+        return (hashMap[hashIndex] != null && !hashMap[hashIndex].isAvailable());
     }
 
     @Override
@@ -292,7 +290,7 @@ public class HashTableLinear<K, V> implements Map<K, V> {
             mapIndex = getStringMapIndex(i);
             key = getStringKey(i);
             value = getStringValue(i);
-            
+
             str += String.format("%-5s %-10s %-15s %-15s %-20s \n",
                     i, index, mapIndex, key, value);
         }
