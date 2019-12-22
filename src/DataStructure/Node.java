@@ -7,7 +7,7 @@ package DataStructure;
 
 /**
  *
- * @author User
+ * @author Kuek Yong Boon
  */
 public class Node<K, V> {
     private Node previous;

@@ -7,7 +7,7 @@ package DataStructure;
 
 /**
  *
- * @author User
+ * @author Kuek Yong Boon
  */
 public class BinaryBucket<K extends Comparable<K>, V> implements Bucket<K, V> {
 

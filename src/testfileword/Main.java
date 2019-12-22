@@ -1,8 +1,6 @@
 package testfileword;
 
 import Constant.ConsoleColors;
-import DataClass.Student;
-import DataStructure.HashTableCloseAddressing;
 import java.util.Scanner;
 import testfileword.YongBoon.Indexing;
 import testfileword.YongBoon.StudentIDHash;
@@ -12,34 +10,11 @@ public class Main {
     public static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-       // start();
-//        Database db = new Database();
-//        db.loadData();
+        start();
 
-//        StudentIDHash as = new StudentIDHash();
-//        as.start();
-// test();
 //        WriteFile wf = new WriteFile();
 //        wf.start();
-         testForHash();
-        //testHash2();
-    }
-
-    private static void testHash2() {
-        HashTableCloseAddressing<Integer, String> hs = new HashTableCloseAddressing<>(10);
-
-        hs.add(1, "1");
-        hs.add(3, "3");
-        hs.add(2, "2");
-        hs.add(2, "5");
-        hs.add(222, "55");
-        hs.add(22, "5555");
-
-        System.out.println(hs.getValue(222));
-
-//        System.out.println(hs.printAll());
-//        System.out.println(hs.size());
-        //System.out.println(hs);
+//        testForHash();
     }
 
     private static void testForHash() {
@@ -66,8 +41,8 @@ public class Main {
 
             switch (input) {
                 case "1":
-                    WriteFile wf = new WriteFile();
-                    wf.start();
+//                    WriteFile wf = new WriteFile();
+//                    wf.start();
                     break; // Go to Write File
                 case "2":
                     readFile();

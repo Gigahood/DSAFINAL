@@ -7,7 +7,7 @@ package DataStructure;
 
 /**
  *
- * @author User
+ * @author Kuek Yong Boon
  */
 public class LinkedBucket<K, V> implements Bucket<K, V> {
 

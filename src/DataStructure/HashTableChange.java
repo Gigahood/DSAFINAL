@@ -7,7 +7,7 @@ package DataStructure;
 
 /**
  *
- * @author User
+ * @author Kuek Yong Boon
  */
 public class HashTableChange<K, V> implements Dictionary<K, V> {
 
@@ -56,7 +56,6 @@ public class HashTableChange<K, V> implements Dictionary<K, V> {
 
         if (hashTable[index] == null) {
             hashTable[index] = new LinkedBucket();
-            //hashTable[index] = new BinaryBucket();
 
         } else {
             if (hashTable[index] instanceof LinkedBucket == true && hashTable[index].size() >= 8) {

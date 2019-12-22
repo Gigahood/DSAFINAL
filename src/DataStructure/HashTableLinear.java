@@ -11,7 +11,7 @@ import java.util.Collection;
 
 /**
  *
- * @author User
+ * @author Kuek Yong Boon
  */
 public class HashTableLinear<K, V> implements Dictionary<K, V> {
 

@@ -7,7 +7,7 @@ package DataStructure;
 
 /**
  *
- * @author User
+ * @author Kuek Yong Boon
  */
 public class HashTableCloseAddressing<K, V> implements Dictionary<K, V> {
 

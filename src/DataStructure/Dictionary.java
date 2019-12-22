@@ -7,7 +7,7 @@ package DataStructure;
 
 /**
  *
- * @author User
+ * @author Kuek Yong Boon
  */
 public interface Dictionary<K, V> {
     /*
@@ -25,10 +25,8 @@ public interface Dictionary<K, V> {
     /*
     Description   : remove a given key value pair 
     Precondition  : The Dictionary is not empty
-                    The key existed in the map
     Postcondition : Size of map decrease
                     key value being removed
-                    Flag the index as removed 
     Return        : True if key being removed
                     False if key is not removed
     */
@@ -44,15 +42,14 @@ public interface Dictionary<K, V> {
     /*
     Description   : Get the value of the given key
     Precondition  : The map is not empty
-                    The map contain the key
     Postcondition : None
     Return        : Return the value of the given key
-                    Return null if there is no key 
+                    Return null if the key is not exist
     */
     V getValue (K key);
     /*
     Description   : Check whether the map contain the given key
-    Precondition  : The map is not empty
+    Precondition  : None
     Postcondition : None
     Return        : Return true if the map contain the key
                     false if it does not contain the key
