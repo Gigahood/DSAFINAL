@@ -12,7 +12,9 @@ public class Main {
     public static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        start();
+       // start();
+        Duplicate dp = new Duplicate();
+        
 //        Database db = new Database();
 //        db.loadData();
 //        StudentIDHash as = new StudentIDHash();

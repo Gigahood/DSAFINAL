@@ -7,7 +7,7 @@ package DataStructure;
 
 /**
  *
- * @author User
+ * @author Lim Yi En
  */
 public interface Set<T> {
     public void add(T item);
@@ -18,6 +18,9 @@ public interface Set<T> {
                    case2) If the item exist in the list, add into duplicated item array.
     Return: Return true if the item i
     */
+    public void add(T item, int count);
+    public Set getDuplicate();
+    
     public int remove(T item);
     /*
     Description: To remove the item from set.
@@ -33,30 +36,22 @@ public interface Set<T> {
     Return: The size
     */
     
-    public Set intersection(Set set);
+    public int checkDuplicate(T item);
     /*
-    Description: To get the duplicate value
-    Precondition: Check the value is union or not.
-    Postcondition: Store in an array
-    Return: The duplicated value
-    */
-    public int union(T item);
-    /*
-    Description: To get the set are without duplicate value.
+    Description: To check if the item already exists in the set.
     Precondition: Check the duplicate value
     Postcondition: null
     Return: If no duplicate return -1, if has duplicate return the index of the duplicate item.
     */
     
-    public boolean hasDuplicate();
+    public boolean hasDuplicate(String item);
     /*
     Description: To check the duplicate item.
     Precondition: null
     Postcondition: null
-    Return: If is duplicate .
+    Return: If has duplicate item in the  .
     */
     
-    public void printDuplicateItems();
     
     public T get(int index);
     /*
@@ -65,7 +60,7 @@ public interface Set<T> {
     Postcondition: null
     Return: The item.
     */
-    public T get(T item);
+    public T get(String item);
      /*
     Description: To get the item.
     Precondition: Check the item is exist.
@@ -80,4 +75,7 @@ public interface Set<T> {
     Postcondition: null
     Return: If is empty return true, else reuturn false.
     */
+    
+    public Set searchID(String id);
+    public Set searchIC(String ic); 
 }
