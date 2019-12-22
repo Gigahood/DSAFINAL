@@ -13,6 +13,7 @@ public class WriteFile {
     private MyArrayList<Student> list20 = new MyArrayList<>();
     private MyArrayList<Student> list150 = new MyArrayList<>();
     private MyArrayList<Student> list200d = new MyArrayList<>();
+    private MyArrayList<Student> listYiEn = new MyArrayList<>();
     private MyArrayList<Student> list1000 = new MyArrayList<>();
     private MyArrayList<Student> list10000 = new MyArrayList<>();
     private MyArrayList<Student> list100000 = new MyArrayList<>();
@@ -26,22 +27,24 @@ public class WriteFile {
     public void start() {
 //        addStudent20();
 //        addStudent150();
-        addStudent200d();
-//        addStudent1000();
-//        addStudent10000();
+ //       addStudent200d();
+  //      addStudentListYiEn();
+        addStudent1000();
+   //     addStudent10000();
 //        addStudent100000();
-        addStudent100000s();
-        addStudent200000d();
-//        addStudent1000000();
+     //   addStudent100000s();
+   //     addStudent200000d();
+      // addStudent1000000();
 //        writeToFile(list20, "Student20.txt");
+ //       writeToFile(listYiEn, "YiEnSpecial.txt");
 //        writeToFile(list150, "Student150.txt");
 //        writeToFile(list200d, "Student200duplicate.txt");
-//        writeToFile(list1000, "Student1000.txt");
-////        writeToFile(list10000, "Student10000.txt");
+        writeToFile(list1000, "Student1000.txt");
+    //    writeToFile(list10000, "Student10000.txt");
 ////         writeToFile(list100000, "Student100000.txt");
 //        writeToFile(list100000s, "Student100000s.txt");
 //        writeToFile(list200000d, "Student200000d.txt");
-//        writeToFile(list1000000, "Student1000000.txt");
+   //    writeToFile(list1000000, "Student1000000.txt");
 
     }
 
@@ -95,6 +98,52 @@ public class WriteFile {
             list150.add(s);
         }
 
+    }
+
+    public void addStudentListYiEn() {
+        String firstName;
+        String lastName;
+        String studentID;
+        String ic;
+        String password;
+        double cgpa;
+
+        for (int i = 0; i < 100; i++) {
+            firstName = randomName(4);
+            lastName = randomName(4);
+            lastName += (" " + randomName(4));
+            cgpa = Double.parseDouble(randomCgpa(3));
+            studentID = Long.toString(getStudentID(19, i));
+            ic = randomIC();
+            password = ic;
+
+            Student s = new Student(studentID, firstName, lastName, ic, cgpa, password);
+
+            listYiEn.add(s);
+            
+            String newFirstName = randomName(4);
+            String newLastName = randomName(4);
+            newLastName += (" " + randomName(4));
+            String newIC = randomIC();
+            
+            Student s2 = new Student(studentID, newFirstName, newLastName, newIC, cgpa, newIC);
+            listYiEn.add(s2);
+            
+            String newStudentID2 = getStudentIDS();
+            String newIC2 = randomIC();
+            
+            Student s3 = new Student(newStudentID2, firstName, lastName, newIC2, cgpa, newIC2);
+            listYiEn.add(s3);
+            
+            String newStudentID3 = getStudentIDS();
+            String newFirstName2 = randomName(4);
+            String newLastName2 = randomName(4);
+            newLastName2 += (" " + randomName(4));
+            
+            Student s4 = new Student(newStudentID3, newFirstName2, newLastName2, ic, cgpa, ic);
+            listYiEn.add(s4);
+            
+        }
     }
 
     public void addStudent20() {

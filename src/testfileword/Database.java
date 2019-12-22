@@ -27,18 +27,22 @@ public class Database {
 //        System.out.println(studentArrayList.size());
 //        load200dStudentData();
 //        System.out.println(studentArrayList.size());
+        loadYiEnSpecialData();
+        System.out.println(studentArrayList.size());
 //        load1000StudentData();
 //        System.out.println(studentArrayList.size());
 //        load10000StudentData();
 //        System.out.println(studentArrayList.size());
-        load100000StudentData();
-        System.out.println(studentArrayList.size());
+//        load100000StudentData();
+//        System.out.println(studentArrayList.size());
 //        load200000dStudentData();
 //        System.out.println(studentArrayList.size());
 //        load100000sStudentData();
 //        System.out.println(studentArrayList.size());
 //        load1000000StudentData();
 //        System.out.println(studentArrayList.size());
+
+        
         
         // Estimate time use below function
 //        long startTime = System.nanoTime();
@@ -64,6 +68,11 @@ public class Database {
     
     private void load200dStudentData() {
         String fileName = "Student200duplicate.txt";
+        readFile(fileName);
+    }
+    
+    private void loadYiEnSpecialData() {
+        String fileName = "YiEnSpecial.txt";
         readFile(fileName);
     }
     

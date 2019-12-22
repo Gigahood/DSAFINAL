@@ -1,7 +1,6 @@
 package testfileword;
 
 import Constant.ConsoleColors;
-import DataClass.Student;
 import java.util.Scanner;
 import testfileword.YongBoon.Indexing;
 import testfileword.YongBoon.StudentIDHash;
@@ -12,18 +11,10 @@ public class Main {
 
     public static void main(String[] args) {
         start();
-//        Database db = new Database();
-//        db.loadData();
-//        StudentIDHash as = new StudentIDHash();
-//        as.start();
-        //test();
+
 //        WriteFile wf = new WriteFile();
 //        wf.start();
-        //testForHash();
-    }
-
-    private static void test() {
-
+//        testForHash();
     }
 
     private static void testForHash() {
@@ -50,8 +41,8 @@ public class Main {
 
             switch (input) {
                 case "1":
-                    WriteFile wf = new WriteFile();
-                    wf.start();
+//                    WriteFile wf = new WriteFile();
+//                    wf.start();
                     break; // Go to Write File
                 case "2":
                     readFile();
