@@ -10,6 +10,7 @@ import DataStructure.ArraySet;
 import DataStructure.HashTableCloseAddressing;
 import DataStructure.HashTableLinear;
 import DataStructure.Set;
+import java.util.Scanner;
 import testfileword.Database;
 import testfileword.Main;
 
@@ -111,6 +112,7 @@ public class Duplicate {
     
     public void searchUI(){
         String s = "";
+        Scanner scan = new Scanner(System.in);
         
         Set<Student> set = new ArraySet<Student>();
         set.add(new Student("19001","Lim","Yi En","990102"));
@@ -119,7 +121,7 @@ public class Duplicate {
         set.add(new Student("11001","Liew","Yi En","990102"));
         
         System.out.print("Key in ID : ");
-        String input = Main.scan.nextLine();
+        String input = scan.nextLine();
         
         System.out.println(set.searchID(input));
         
