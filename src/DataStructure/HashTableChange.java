@@ -10,13 +10,14 @@ package DataStructure;
  * @author User
  */
 public class HashTableChange<K, V> implements Dictionary<K, V> {
-  private Bucket[] hashTable;
+
+    private Bucket[] hashTable;
     private int size;
 
     private double loadFactor;
 
     private final int INITIAL_CAPACITY = 227;
-    private final double DEFAULT_LOAD_FACTOR = 10.85;
+    private final double DEFAULT_LOAD_FACTOR = 910.85;
 
     public HashTableChange() {
         this.size = 0;
@@ -40,9 +41,14 @@ public class HashTableChange<K, V> implements Dictionary<K, V> {
     @Override
     public V add(K key, V value) {
         int index = getHashIndex(key);
-
+        
+        if (hashTable[1] instanceof BinaryBucket) {
+            System.out.println("Binary");
+        } else {
+            System.out.println("Linked");
+        }
+        
         if (isFull()) {
-            System.out.println("rehash");
             rehash();
         }
 
@@ -50,16 +56,16 @@ public class HashTableChange<K, V> implements Dictionary<K, V> {
 
         if (hashTable[index] == null) {
             hashTable[index] = new LinkedBucket();
+            //hashTable[index] = new BinaryBucket();
 
         } else {
             if (hashTable[index] instanceof LinkedBucket == true && hashTable[index].size() >= 8) {
                 changeToBST(index);
             }
         }
-        
 
         returnValue = (V) hashTable[index].add(key, value);
-        
+
         if (returnValue == null) {
             size++;
         }
@@ -134,8 +140,6 @@ public class HashTableChange<K, V> implements Dictionary<K, V> {
         while (!isPrime(size)) {
             size += 2;
         }
-        
-       
 
         return size;
     }
@@ -178,26 +182,28 @@ public class HashTableChange<K, V> implements Dictionary<K, V> {
         return index;
 
     }
-    
+
     private void rehash() {
         Bucket[] oldBucket = hashTable;
         int oldSize = size;
         hashTable = new Bucket[getNextPrime(oldSize * 2)];
         size = 0;
-        
+
         for (int i = 0; i < oldBucket.length; i++) {
             if (oldBucket[i] != null) {
                 for (int j = 0; j < oldBucket[i].size(); j++) {
-                    add((K) oldBucket[i].get(j).getKey(),(V) oldBucket[i].get(j).getValue());
+                    if ((K) oldBucket[i].get(j) != null) {
+                        add((K) oldBucket[i].get(j).getKey(), (V) oldBucket[i].get(j).getValue());
+                    }
                 }
             }
         }
     }
-    
+
     private void changeToBST(int index) {
         Bucket newBST = new BinaryBucket();
         Bucket oldLinked = hashTable[index];
-        
+
         for (int i = 0; i < oldLinked.size(); i++) {
             newBST.add(oldLinked.get(i).getKey(), oldLinked.get(i).getValue());
         }
@@ -210,12 +216,12 @@ public class HashTableChange<K, V> implements Dictionary<K, V> {
     public String toString() {
         String str = "";
 
-        for (Bucket hashTable1 : hashTable) { 
-//            if (hashTable1 instanceof BinaryBucket) {
-//                System.out.println("Binary");
-//            } else if (hashTable1 instanceof LinkedBucket) {
-//                System.out.println("Linked");
-//            }
+        for (Bucket hashTable1 : hashTable) {
+            if (hashTable1 instanceof BinaryBucket) {
+                System.out.println("Binary");
+            } else if (hashTable1 instanceof LinkedBucket) {
+                System.out.println("Linked");
+            }
 
             if (hashTable1 == null) {
                 str += "null";

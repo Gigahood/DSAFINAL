@@ -305,7 +305,7 @@ public class HashTableCloseAddressing<K, V> implements Dictionary<K, V> {
         size = 0;
         // put in value inside the new bucket
 
-        for (int i = 0; i < oldSize; i++) {
+        for (int i = 0; i < oldBucket.length; i++) {
             Node currentNode = oldBucket[i];
             if (currentNode != null) {
 

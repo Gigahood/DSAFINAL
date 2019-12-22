@@ -12,16 +12,16 @@ public class Main {
     public static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        //start();
+       // start();
 //        Database db = new Database();
 //        db.loadData();
 
 //        StudentIDHash as = new StudentIDHash();
 //        as.start();
-        //test();
-        WriteFile wf = new WriteFile();
-        wf.start();
-        testForHash();
+// test();
+//        WriteFile wf = new WriteFile();
+//        wf.start();
+         testForHash();
         //testHash2();
     }
 
@@ -34,12 +34,11 @@ public class Main {
         hs.add(2, "5");
         hs.add(222, "55");
         hs.add(22, "5555");
-        
+
         System.out.println(hs.getValue(222));
 
 //        System.out.println(hs.printAll());
 //        System.out.println(hs.size());
-
         //System.out.println(hs);
     }
 

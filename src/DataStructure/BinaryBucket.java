@@ -39,12 +39,12 @@ public class BinaryBucket<K extends Comparable<K>, V> implements Bucket<K, V> {
 
     private V addEntry(Node<K, V> rootNode, K key, V value) {
         V result = null;
-        int comparison = key.compareTo((K) rootNode.getKey());
+        int comparison = key.compareTo(((K) rootNode.getKey()));
 
-        if (comparison == 0) {						// newEntry matches entry in root
+        if (key.hashCode() == rootNode.getKey().hashCode()) {						// newEntry matches entry in root
             result = rootNode.getValue();
             rootNode.setKey(key);
-        } else if (comparison < 0) {				// newEntry < entry in root
+        } else if (key.hashCode() < rootNode.getKey().hashCode()) {				// newEntry < entry in root
             if (rootNode.getPrevious() != null) {
                 result = (V) addEntry(rootNode.getPrevious(), key, value);
             } else {
