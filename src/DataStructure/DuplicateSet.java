@@ -13,12 +13,12 @@ import DataClass.Student;
  *
  * @author Lim Yi En
  */
-public class ArraySet<T> implements Set<T> {
+public class DuplicateSet<T> implements Set<T> {
 
     private Node[] array;
     private int size;
 
-    public ArraySet() {
+    public DuplicateSet() {
         array = new Node[10];
         size = 0;
     }
@@ -66,7 +66,7 @@ public class ArraySet<T> implements Set<T> {
     
     @Override
     public Set getDuplicate() {
-        Set dupValue = new ArraySet();
+        Set dupValue = new DuplicateSet();
 
         for (int i = 0; i < size; i++) {
             if (array[i].getCount() != 0) {
@@ -76,9 +76,9 @@ public class ArraySet<T> implements Set<T> {
         
          return dupValue;
     }
-      
+    //-------------------------------------------------ID--------------------------------------------------  
     public Set checkUniqueID() {
-        ArraySet idSet = new ArraySet();
+        DuplicateSet idSet = new DuplicateSet();
         
         for (int i = 0; i < size; i++) {
             
@@ -109,8 +109,69 @@ public class ArraySet<T> implements Set<T> {
 
         return -1;
     }
-    
+    //-------------------------------------------------IC--------------------------------------------------  
+    public Set checkUniqueIC() {
+        DuplicateSet icSet = new DuplicateSet();
+        
+        for (int i = 0; i < size; i++) {
+            
+            Student s = (Student) array[i].getValue();
 
+            if (checkDuplicateIC(s.getIc(), icSet) < 0) {
+                icSet.add(s, array[i].getCount());
+            } 
+            else {
+                Node ad = (Node) icSet.getNode(checkDuplicateID(s.getIc(), icSet));      
+                ad.count++;
+            }
+        }
+
+        return icSet;
+    }
+
+    public int checkDuplicateIC(String ic, Set icSet) {
+        for (int i = 0; i < icSet.size(); i++) {
+            Student s = (Student) icSet.get(i);
+
+            if (s.getIc().equals(ic)) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+    //--------------------------------------------------Name------------------------------------------------------
+    public Set checkUniqueName() {
+        DuplicateSet nameSet = new DuplicateSet();
+        
+        for (int i = 0; i < size; i++) {
+            
+            Student s = (Student) array[i].getValue();
+
+            if (checkDuplicateName(s.getFirstName(),s.getLastName(), nameSet) < 0) {
+                nameSet.add(s, array[i].getCount());
+            } 
+            else {
+                Node ad = (Node) nameSet.getNode(checkDuplicateID(s.getIc(), nameSet));      
+                ad.count++;
+            }
+        }
+
+        return nameSet;
+    }
+
+    public int checkDuplicateName(String fname, String lname, Set nameSet) {
+        for (int i = 0; i < nameSet.size(); i++) {
+            Student s = (Student) nameSet.get(i);
+
+            if (s.getFirstName().equals(fname) && s.getLastName().equals(lname)) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+    //-------------------------------------------------------------------------------------------------------
     @Override
     public void add(T item, int count) {
         if (item != null) { //item is not empty
@@ -134,7 +195,7 @@ public class ArraySet<T> implements Set<T> {
     //=---------------------------------------search------------------------------------------------------------------
     
     public Set searchID(String id) {
-        Set result = new ArraySet();
+        Set result = new DuplicateSet();
         
         for (int i = 0; i < size; i++) {
             if (array[i].value instanceof Student) {
@@ -149,7 +210,7 @@ public class ArraySet<T> implements Set<T> {
     }
 
     public Set searchIC(String ic) {
-        Set result = new ArraySet();
+        Set result = new DuplicateSet();
 
         for (int i = 0; i < size; i++) {
             if (array[i].value instanceof Student) {
@@ -162,7 +223,21 @@ public class ArraySet<T> implements Set<T> {
 
         return result;
     }
+    
+    public Set searchName(String fname, String lname) {
+        Set result = new DuplicateSet();
 
+        for (int i = 0; i < size; i++) {
+            if (array[i].value instanceof Student) {
+                Student s = (Student) array[i].value;
+                if (s.getFirstName().equals(fname)&&s.getLastName().equals(lname)) {
+                    result.add(s, array[i].getCount());
+                }
+            }
+        }
+
+        return result;
+    }
     //--------------------------------------------------------------------------------------------------------------
     public int remove(T item) {
         int index = -1;
@@ -198,7 +273,7 @@ public class ArraySet<T> implements Set<T> {
     }
     
     
-    public void expandArray() {
+    private void expandArray() {
         Node[] oldArray = array;
         //duplicateArray = (T[]) new Object[oldArray.length * 2];
         array = new Node[oldArray.length * 2];
@@ -253,7 +328,7 @@ public class ArraySet<T> implements Set<T> {
         String str = "";
 
         for (int i = 0; i < size; i++) {
-            str += array[i].value +"\t   " + array[i].count;
+            str += array[i];
             str += "\n";
         }
 
