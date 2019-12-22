@@ -25,7 +25,7 @@ public class StudentIDHash {
             System.out.println("");
             System.out.println("Press 1 --> Search");
             System.out.println("Press 2 --> View File Content");
-            System.out.println("Press 3 --> View with 10 search");
+            System.out.println("Press 3 --> View with 12 search");
             System.out.println("Press 4 --> HashWithTree");
             System.out.println("Press 5 --> Back");
             System.out.println("");
@@ -193,7 +193,7 @@ public class StudentIDHash {
             long estimatedTime;
             long total = 0;
 
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 12; i++) {
                 startTime = System.nanoTime();
                 System.out.println(studentHash.getValue("70373622"));
                 estimatedTime = System.nanoTime() - startTime;

@@ -126,22 +126,6 @@ public class MyArrayList<T> implements MyList<T> {
         return -1;
     }
 
-//
-//    @Override
-//    public int lastIndexOf(T o) {
-//       
-//    }
-//    private void moveBackward(int count, int index, T data[]) {   
-//        int next;
-//        int previous;
-//        
-//        for (int i = count; i >= index; i--) {
-//            next = ++i;
-//            previous = i--;
-//            
-//            System.out.println(count + ""+next + " " + previous);
-//        }
-//    }
     private boolean checkArraySize(int size) {
         if (size > count) {
             throw new ArrayIndexOutOfBoundsException();

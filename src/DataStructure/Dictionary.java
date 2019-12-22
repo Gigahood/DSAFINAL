@@ -16,8 +16,11 @@ public interface Dictionary<K, V> {
     Precondition  : Calculate the hashcode of the key
                     Calculate the index based on the key
                     If map is full, rehash the map with bigger map
-    Postcondition : A key value pair being added to the map
-                    Size of map increase
+    Postcondition : If Key not Exist
+                        A key value pair being added to the map
+                        Size of map increase
+                    Else
+                        Old value will be replaced by given value
     Return        : Return the old if key existed
                     Return null if key not existed
     */
