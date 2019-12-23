@@ -18,14 +18,8 @@ public interface SortedListADT<T> {
     Precondition :  the data is not null
     Postcondition : the data is added to the list
     Return :  none
-     */
-//    public String search(String code);
-//    /*
-//    Description : To search the data in the list
-//    Precondition : The string is not empty
-//    Postcondition : None
-//    Return : The item from the list is returned, if there is nothing in the list the system will return "Game not Found"
-//    */
+    */
+    
     public boolean remove(T anEntry);
 
     /*

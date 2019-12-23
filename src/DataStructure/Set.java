@@ -50,7 +50,9 @@ public interface Set<T> {
     Description: To get item based on the index.
     Precondition: Check the index must be smaller or equal the size.
     Postcondition: null
-    Return: The item.
+    Return: Return the value of the item.
+            Return null if the index is invalid.
+
     */
     
     public T get(String item);
@@ -77,7 +79,7 @@ public interface Set<T> {
     Description: To check the size of the set.
     Precondition: null
     Postcondition: null
-    Return: Return the sie of the set.
+    Return: Return the size of the set.
     */
     public boolean clear();
     /*
