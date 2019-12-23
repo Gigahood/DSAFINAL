@@ -1,6 +1,7 @@
 package DataStructure;
 
 import java.util.Arrays;
+import testfileEJET_Sorting.StudentTest;
 
 public class MyArrayList<T> implements MyList<T> {
 
@@ -16,6 +17,10 @@ public class MyArrayList<T> implements MyList<T> {
     // this is initialize arrayList default size of 10.
     public MyArrayList() {
         this.data = (T[]) new Object[FIXED_SIZE];
+    }
+
+    public int getCount() {
+        return count;
     }
 
     @Override
@@ -54,19 +59,19 @@ public class MyArrayList<T> implements MyList<T> {
         checkArraySize(entry);
         return this.data[entry];
     }
-    
+
     @Override
     public T get(T obj) {
-        if(isEmpty()) {
+        if (isEmpty()) {
             return null;
         }
-        
+
         int index = getIndex(obj);
-        
+
         if (index < 0) {
             return null;
         }
-        
+
         return data[index];
     }
 
@@ -133,14 +138,14 @@ public class MyArrayList<T> implements MyList<T> {
 
         return true;
     }
-    
-    private int getIndex (T obj) {
+
+    private int getIndex(T obj) {
         for (int i = 0; i < count; i++) {
             if (obj.equals(data[i])) {
                 return i;
             }
         }
-        
+
         return -1;
     }
 
@@ -173,7 +178,30 @@ public class MyArrayList<T> implements MyList<T> {
         return str;
     }
 
+    public String sortStudID() {
+
+        String str = "";
+        str += "\nThe records is too long, first 20 records are shown instead";
+        str += String.format("%-5s %-15s %-10s %-15s %-15s %-20s %-5s \n",
+                "No", "StudentId", "FirstName",
+                "LastName", "IC", "Password", "CGPA");
+        if (count > 20) {
+            for (int i = 0; i < 20; i++) {
+                str += String.format("%-5d %-20s \n",
+                        i, get(i));
+            }
+
+        } else {
+            for (int i = 0; i < count; i++) {;
+                str += String.format("%-5d %-20s \n",
+                        i, get(i));
+            }
+        }
+
+        return str;
+    }
     // will return a new array with bigger size
+
     private void resizeArray() {
         this.data = Arrays.copyOf(data, count * count);
     }

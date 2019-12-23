@@ -1,9 +1,10 @@
-package DataClass;
+package testfileEJET_Sorting;
 
+import DataClass.*;
+import DataStructure.MyArrayList;
 import java.util.Objects;
 
-public class Student implements Comparable<Student> {
-
+public class StudentTest implements Comparable <StudentTest>  {
     private String studentID;
     private String password;
     private String firstName;
@@ -11,12 +12,12 @@ public class Student implements Comparable<Student> {
     private String ic;
     private double cgppa;
 
-    public Student(String firstName, String lastName) {
+    public StudentTest(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
-    public Student(String studentID, String firstName, String lastName, String ic, double cgppa, String password) {
+    
+    public StudentTest(String studentID, String firstName, String lastName, String ic, double cgppa, String password) {
         this.studentID = studentID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -31,7 +32,7 @@ public class Student implements Comparable<Student> {
 
     public void setPassword(String password) {
         this.password = password;
-    }
+    }  
 
     public String getStudentID() {
         return studentID;
@@ -72,20 +73,24 @@ public class Student implements Comparable<Student> {
     public void setCgppa(double cgppa) {
         this.cgppa = cgppa;
     }
-
+   
+    
     // this will cause overflow and the result will become negative if it is 
     // a String
+
     @Override
     public String toString() {
         String str = "";
 
         str += String.format("%-15s %-10s %-15s %-15s %-20s %-5s",
-                this.studentID, this.firstName,
+                this.studentID, this.firstName, 
                 this.lastName, this.ic, this.password, this.cgppa);
-
+  
         return str;
     }
-
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -108,7 +113,7 @@ public class Student implements Comparable<Student> {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Student other = (Student) obj;
+        final StudentTest other = (StudentTest) obj;
         if (!Objects.equals(this.studentID, other.studentID)) {
             return false;
         }
@@ -125,8 +130,44 @@ public class Student implements Comparable<Student> {
     }
 
     @Override
-    public int compareTo(Student o) {        
+    public int compareTo(StudentTest o) {
         return studentID.compareTo(o.studentID);
-    }
-
+        }
+    
+//    public int compareFirstName(StudentTest o){
+//        int returnVal = -1;
+//        if (firstName.compareTo(o.firstName) >0 || firstName.compareTo(o.firstName) <0){
+//            returnVal = firstName.compareTo(o.firstName);
+//        }
+//        else if (firstName.compareTo(o.firstName) == 0){
+//            returnVal = compareTo(o);
+//        }
+//        return returnVal;
+//    }
+//    
+//    public int compareIC(StudentTest o){
+//        int returnVal = -1;
+//        if (ic.compareTo(o.ic) >0 || ic.compareTo(o.ic) <0){
+//            returnVal = ic.compareTo(o.ic);
+//        }
+//        else if (ic.compareTo(o.ic) == 0){
+//            returnVal = compareTo(o);
+//        }
+//        return returnVal;
+//    }
+//    
+//    public int compareCGPA(StudentTest o){
+//        int returnVal = -1;
+//        if (cgppa <= o.cgppa){
+//            returnVal = -1;
+//        }
+//        else if (cgppa >= o.cgppa){
+//           returnVal = 1;
+//        }
+//        else if (cgppa == o.cgppa){
+//            returnVal = compareTo(o);
+//        }
+//        return returnVal;
+//    }
+   
 }
