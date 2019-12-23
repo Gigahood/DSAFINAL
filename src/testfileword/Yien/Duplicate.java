@@ -139,7 +139,7 @@ public class Duplicate {
                     + ConsoleColors.RESET);
         } else {
             if (set.checkDuplicateValue()) {
-                 s = "Has Duplicate";
+                s = "Has Duplicate";
                 System.out.println("Result:" + ConsoleColors.RED_BOLD + s + ConsoleColors.RESET);
 
             } else {
@@ -172,6 +172,12 @@ public class Duplicate {
 
     public void searchName() {
         DuplicateSet<Student> set = new DuplicateSet<Student>();
+        Set<Student> s2 = new DuplicateSet<Student>();
+
+        for (int i = 0; i < db.studentArrayList.size(); i++) {
+            set.add(db.studentArrayList.get(i));
+
+        }
 
         System.out.println("***************** Search Duplicate Name ********************");
         System.out.print("Key in First Name : ");
@@ -179,13 +185,16 @@ public class Duplicate {
         System.out.print("Key in Last Name : ");
         String l = scanner.nextLine();
 
-        validateDuplicate(l, set);
+        s2 = set.searchName(f, l);
+
+        validateDuplicate((f + " " + l), s2);
         header();
-        System.out.println(set.searchName(f, l));
+        System.out.println(s2);
     }
 
     public void searchIC() {
         DuplicateSet<Student> set = new DuplicateSet<Student>();
+        Set<Student> s2 = new DuplicateSet<Student>();
 
         for (int i = 0; i < db.studentArrayList.size(); i++) {
             set.add(db.studentArrayList.get(i));
@@ -195,6 +204,12 @@ public class Duplicate {
         System.out.println("***************** Search Duplicate IC ********************");
         System.out.print("Key in IC : ");
         String input = scanner.nextLine();
+
+        s2 = set.searchIC(input);
+
+        validateDuplicate(input, s2);
+        header();
+        System.out.println(s2);
 
 //        validateDuplicate(input, s);
 //        header();

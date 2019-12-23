@@ -129,7 +129,7 @@ public class DuplicateSet<T> implements Set<T> {
             } 
             else {
                 Node ad = (Node) icSet.getNode(checkDuplicateID(s.getIc(), icSet));      
-//                ad.count++;
+                ad.count++;
             }
         }
 
@@ -233,10 +233,14 @@ public class DuplicateSet<T> implements Set<T> {
     
     public Set searchName(String fname, String lname) {
         Set result = new DuplicateSet();
-
+        
         for (int i = 0; i < size; i++) {
+           // System.out.println("2");
             if (array[i].value instanceof Student) {
                 Student s = (Student) array[i].value;
+//                System.out.println(s.getFirstName());
+//                System.out.println(s.getLastName());
+                
                 if (s.getFirstName().equals(fname)&&s.getLastName().equals(lname)) {
                     result.add(s, array[i].getCount());
                 }
