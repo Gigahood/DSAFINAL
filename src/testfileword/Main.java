@@ -3,6 +3,7 @@ package testfileword;
 import Constant.ConsoleColors;
 import DataClass.Student;
 import java.util.Scanner;
+import testfileEJET_Sorting.Sorting;
 import testfileword.YongBoon.Indexing;
 import testfileword.YongBoon.StudentIDHash;
 
@@ -73,7 +74,7 @@ public class Main {
         System.out.println("Select 1 of the People Module : ");
         System.out.println("1. Yong Boon --> Indexing");
         System.out.println("2. Yi En --> Duplicate");
-        System.out.println("3. E Jet --> ");
+        System.out.println("3. E Jet --> Sorting");
         System.out.println("4. Man Quan --> ");
         System.out.println("5. Return");
         System.out.println("");
@@ -105,6 +106,8 @@ public class Main {
                 case "2":
                     break;
                 case "3":
+                    Sorting sort = new Sorting();
+                    sort.start();
                     break;
                 case "4":
                     break;
