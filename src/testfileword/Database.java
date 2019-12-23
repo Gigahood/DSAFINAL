@@ -28,7 +28,7 @@ public class Database {
 //        load200dStudentData();
 //        System.out.println(studentArrayList.size());
         loadYiEnSpecialData();
-        System.out.println(studentArrayList.size());
+       // System.out.println(studentArrayList.size());
 //        load1000StudentData();
 //        System.out.println(studentArrayList.size());
 //        load10000StudentData();

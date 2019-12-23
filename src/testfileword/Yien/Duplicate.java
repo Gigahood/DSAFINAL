@@ -23,10 +23,8 @@ public class Duplicate {
     public static Database db = new Database();
     public static Scanner scanner = new Scanner(System.in);
 
-    
-
     public void printList() {
-
+        db.loadData();
         System.out.println("Duplicate Check Session");
         System.out.println("1. Overall Result");
         System.out.println("2. SearchID");
@@ -64,36 +62,35 @@ public class Duplicate {
 
     public void testing() {
 
-        db.loadData();
+        //  db.loadData();
         DuplicateSet<Student> s = new DuplicateSet<Student>();
-        
+
         Set<Student> s2 = new DuplicateSet<Student>();
         Set<Student> s3 = new DuplicateSet<Student>();
         Set<Student> s4 = new DuplicateSet<Student>();
-        
+
         for (int i = 0; i < db.studentArrayList.size(); i++) {
             s.add(db.studentArrayList.get(i));
 
         }
-        
+
         s2 = s.checkUniqueID();
-        
-        System.out.println( s.checkUniqueName());
-        
+
+        System.out.println(s.checkUniqueName());
+
         s3 = s.checkUniqueName();
         s4 = s.checkUniqueIC();
-        
+
         System.out.format("%-3s %-15s %-20s %-15s %-16s %-5s %-5s",
                 "", "Id", "Name", "Ic", "Pass", "Cgpa", "No. of Duplicate");
 
         System.out.println("");
         System.out.println(s);
-        
-        
+
         System.out.println("Original total with duplicate data: " + db.studentArrayList.size());
-        System.out.println("Total: " + s.size() + "\t " + "Total Duplicate ID: " + (s.size() - s2.size())  + "\t "
-                + "Total Duplicate Name: " + (s.size() - s3.size()) + "\t " 
-                + "Total Duplicate IC: " + (s.size() - s4.size()) );
+        System.out.println("Total: " + s.size() + "\t " + "Total Duplicate ID: " + (s.size() - s2.size()) + "\t "
+                + "Total Duplicate Name: " + (s.size() - s3.size()) + "\t "
+                + "Total Duplicate IC: " + (s.size() - s4.size()));
         scanner.nextLine();
 
     }
@@ -125,8 +122,7 @@ public class Duplicate {
                     Main.clearScreen();
                     searchIC();
                 }
-            } 
-            else{
+            } else {
                 Main.clearScreen();
                 printList();
                 break;
@@ -150,21 +146,20 @@ public class Duplicate {
 
     public void searchID() {
 //        Set<Student> set = new DuplicateSet<Student>();
+
        
-        db.loadData();
-        
+
         Set<Student> s = new DuplicateSet<Student>();
-        
-        for (int i=0; i<db.studentArrayList.size(); i++){
+
+        for (int i = 0; i < db.studentArrayList.size(); i++) {
             s.add(db.studentArrayList.get(i));
-           
+
         }
-        
+
 //        set.add(new Student("19001", "Lim", "Yi En", "990102"));
 //        set.add(new Student("19001", "Lim", "Yi En", "9901112"));
 //
 //        set.add(new Student("11001", "Liew", "Yi En", "990102"));
-
         System.out.println("***************** Search Duplicate ID ********************");
         System.out.print("Key in ID : ");
         String input = scanner.nextLine();
