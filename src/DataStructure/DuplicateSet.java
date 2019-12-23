@@ -55,13 +55,21 @@ public class DuplicateSet<T> implements Set<T> {
 
     }
     
-    public int checkDuplicate(T item) {
+    private int checkDuplicate(T item) {
         for (int i = 0; i < size; i++) {
             if (array[i].value.equals(item)) {
                 return i; //The index of the duplicate value
             }
         }
         return -1; // If no duplicate value return null.
+    }
+    public boolean checkDuplicateValue(String item) {
+        for (int i = 0; i < size; i++) {
+            if (array[i].value.equals(item)) {
+                return true; //The index of the duplicate value
+            }
+        }
+        return false; // If no duplicate value return null.
     }
     
     @Override

@@ -23,9 +23,7 @@ public class Duplicate {
     public static Database db = new Database();
     public static Scanner scanner = new Scanner(System.in);
 
-    public Duplicate() {
-        printList();
-    }
+    
 
     public void printList() {
 
@@ -78,12 +76,13 @@ public class Duplicate {
 //        
         // System.out.println(set);
 //        System.out.println(duplicate);
-        db.loadData();
-        Set<Student> s = new DataStructure.DuplicateSet<Student>();
+//        db.loadData();
+//        
+//        Set<Student> s = new DataStructure.DuplicateSet<Student>();
 //        HashTableLinear<String, Student> a = new HashTableLinear<>();
 //        
 //        for (int i=0; i<db.studentArrayList.size(); i++){
-//            a.add(db.studentArrayList.get(i).getStudentID(),db.studentArrayList.get(i) );
+//            a.add(db.studentArrayList.get(i).getStudentID(),db.studentArrayList.get(i));
 //           // System.out.println(s);
 //        }
 //        
@@ -126,12 +125,12 @@ public class Duplicate {
 
     }
 
-    public void header() {
+    private void header() {
         System.out.format("%-3s %-15s %-20s %-15s %-16s %-5s %-5s",
                 "", "Id", "Name", "Ic", "Pass", "Cgpa", "No. of Duplicate\n");
     }
 
-    public void searchUI(int index) {
+    private void searchUI(int index) {
         String choice;
         while (true) {
             while (true) {
@@ -162,12 +161,12 @@ public class Duplicate {
         }
     }
 
-    public void validateDuplicate(String input) {
+    private void validateDuplicate(String input) {
         String s = "";
         System.out.println("Search for" + input);
         Set<Student> set = new DuplicateSet<Student>();
 
-        if (set.hasDuplicate(input)) {
+        if (set.checkDuplicateValue(input)) {
             s = "Has Duplicate";
             System.out.println("Result:" + s);
         } else {
@@ -177,11 +176,21 @@ public class Duplicate {
     }
 
     public void searchID() {
-        Set<Student> set = new DuplicateSet<Student>();
-        set.add(new Student("19001", "Lim", "Yi En", "990102"));
-        set.add(new Student("19001", "Lim", "Yi En", "9901112"));
-
-        set.add(new Student("11001", "Liew", "Yi En", "990102"));
+//        Set<Student> set = new DuplicateSet<Student>();
+       
+        db.loadData();
+        
+        Set<Student> s = new DuplicateSet<Student>();
+        
+        for (int i=0; i<db.studentArrayList.size(); i++){
+            s.add(db.studentArrayList.get(i));
+           
+        }
+        
+//        set.add(new Student("19001", "Lim", "Yi En", "990102"));
+//        set.add(new Student("19001", "Lim", "Yi En", "9901112"));
+//
+//        set.add(new Student("11001", "Liew", "Yi En", "990102"));
 
         System.out.println("***************** Search Duplicate ID ********************");
         System.out.print("Key in ID : ");
@@ -189,7 +198,7 @@ public class Duplicate {
 
         validateDuplicate(input);
         header();
-        System.out.println(set.searchID(input));
+        System.out.println(s.searchID(input));
     }
 
     public void searchName() {

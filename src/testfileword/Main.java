@@ -95,11 +95,13 @@ public class Main {
                     index.start();
                     break;
                 case "2":
+                    System.out.println("1");
                     Duplicate set = new Duplicate();
                     set.printList();
-                    Main.scan.nextLine();
+                    
                     break;
                 case "3":
+                    
                     break;
                 case "4":
                     break;
