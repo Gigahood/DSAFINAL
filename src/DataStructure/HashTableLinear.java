@@ -13,7 +13,7 @@ import java.util.Collection;
  *
  * @author Kuek Yong Boon
  */
-public class HashTableLinear<K, V> implements Dictionary<K, V> {
+public class HashTableLinear<K, V> implements Map<K, V> {
 
     private Entry<K, V>[] hashMap;
     private int size;

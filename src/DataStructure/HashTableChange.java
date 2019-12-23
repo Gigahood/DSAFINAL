@@ -9,7 +9,7 @@ package DataStructure;
  *
  * @author Kuek Yong Boon
  */
-public class HashTableChange<K, V> implements Dictionary<K, V> {
+public class HashTableChange<K, V> implements Map<K, V> {
 
     private Bucket[] hashTable;
     private int size;

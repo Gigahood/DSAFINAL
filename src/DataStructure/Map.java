@@ -9,9 +9,9 @@ package DataStructure;
  *
  * @author Kuek Yong Boon
  */
-public interface Dictionary<K, V> {
+public interface Map<K, V> {
     /*
-    Description   : Add a key-value pair to the Dictionary at certain index position
+    Description   : Add a key-value pair to the Map at certain index position
                     If the key existed, replace and return the old value
     Precondition  : Calculate the hashcode of the key
                     Calculate the index based on the key
@@ -27,7 +27,7 @@ public interface Dictionary<K, V> {
     V add (K key, V value);
     /*
     Description   : remove a given key value pair 
-    Precondition  : The Dictionary is not empty
+    Precondition  : The Map is not empty
     Postcondition : Size of map decrease
                     key value being removed
     Return        : True if key being removed

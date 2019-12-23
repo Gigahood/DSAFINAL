@@ -9,7 +9,7 @@ package DataStructure;
  *
  * @author Kuek Yong Boon
  */
-public class HashTableCloseAddressing<K, V> implements Dictionary<K, V> {
+public class HashTableCloseAddressing<K, V> implements Map<K, V> {
 
     private int size;
     private Node<K, V>[] bucket;
