@@ -106,7 +106,7 @@ public class DuplicateSet<T> implements Set<T> {
         return idSet;
     }
 
-    public int checkDuplicateID(String id, Set idSet) {
+    private int checkDuplicateID(String id, Set idSet) {
         for (int i = 0; i < idSet.size(); i++) {
             Student s = (Student) idSet.get(i);
 
@@ -137,7 +137,7 @@ public class DuplicateSet<T> implements Set<T> {
         return icSet;
     }
 
-    public int checkDuplicateIC(String ic, Set icSet) {
+    private int checkDuplicateIC(String ic, Set icSet) {
         for (int i = 0; i < icSet.size(); i++) {
             Student s = (Student) icSet.get(i);
 
@@ -168,7 +168,7 @@ public class DuplicateSet<T> implements Set<T> {
         return nameSet;
     }
 
-    public int checkDuplicateName(String fname, String lname, Set nameSet) {
+    private int checkDuplicateName(String fname, String lname, Set nameSet) {
         for (int i = 0; i < nameSet.size(); i++) {
             Student s = (Student) nameSet.get(i);
 

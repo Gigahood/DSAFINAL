@@ -95,7 +95,8 @@ public class Main {
                     index.start();
                     break;
                 case "2":
-                    System.out.println("1");
+                    clearScreen();
+                            
                     Duplicate set = new Duplicate();
                     set.printList();
                     

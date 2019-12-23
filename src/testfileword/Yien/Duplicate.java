@@ -60,68 +60,39 @@ public class Duplicate {
                 break;
         }
 
-//        System.out.println(s.getStudentID());
-//        System.out.println(s.toString1());
-//        System.out.println(set.get(0));
-//        System.out.println(set.searchID("19001"));
-//        long startTime = System.nanoTime();
-//        
-//        //System.out.println(set.checkUniqueID());
-//        //System.out.println(set.searchIC("990102"));
-//        long estimatedTime = System.nanoTime() - startTime;
-//        System.out.println("Time Used in Nanoseconds : " + estimatedTime);
-//        
-//        Set duplicate = set.getDuplicate();
-//        //set.union(set);
-//        
-        // System.out.println(set);
-//        System.out.println(duplicate);
-//        db.loadData();
-//        
-//        Set<Student> s = new DataStructure.DuplicateSet<Student>();
-//        HashTableLinear<String, Student> a = new HashTableLinear<>();
-//        
-//        for (int i=0; i<db.studentArrayList.size(); i++){
-//            a.add(db.studentArrayList.get(i).getStudentID(),db.studentArrayList.get(i));
-//           // System.out.println(s);
-//        }
-//        
-//        System.out.println(a.size());
-//        
-//        System.out.println(s);
-        // System.out.println(s.size());
-//        for (int i=0; i<db.studentArrayList.size(); i++){
-//            
-//            System.out.println(db.studentArrayList.get(i));
-//        }
     }
 
     public void testing() {
 
-        Set<Student> set = new DuplicateSet<Student>();
-        set.add(new Student("19001", "Lim", "Yi En", "990102"));
-        set.add(new Student("19001", "Lim", "Yi En", "990122"));
-        set.add(new Student("19001", "Lim", "Yi En", "990102"));
-        set.add(new Student("19001", "Lim", "Yi En", "990102"));
-        set.add(new Student("19001", "Lim", "Yi En", "990102"));
-        set.add(new Student("19001", "Tan", "Yi En", "990102"));
-        set.add(new Student("19001", "Liew", "Yi En", "990102"));
-        set.add(new Student("11001", "Liew", "Yi En", "990102"));
-
         db.loadData();
-        Set<Student> s = new DataStructure.DuplicateSet<Student>();
+        DuplicateSet<Student> s = new DuplicateSet<Student>();
+        
+        Set<Student> s2 = new DuplicateSet<Student>();
+        Set<Student> s3 = new DuplicateSet<Student>();
+        Set<Student> s4 = new DuplicateSet<Student>();
+        
         for (int i = 0; i < db.studentArrayList.size(); i++) {
             s.add(db.studentArrayList.get(i));
 
         }
 
+        
+        s2 = s.checkUniqueID();
+        s3 = s.checkUniqueName();
+        s4 = s.checkUniqueIC();
+        
         System.out.format("%-3s %-15s %-20s %-15s %-16s %-5s %-5s",
                 "", "Id", "Name", "Ic", "Pass", "Cgpa", "No. of Duplicate");
 
         System.out.println("");
         System.out.println(s);
-
-        System.out.println("Total: " + s.size() + 1 + "\t " + "Duplicate ID: ");
+        
+        
+        System.out.println("Original total with duplicate data: " + db.studentArrayList.size());
+        System.out.println("Total: " + s.size() + "\t " + "Total Duplicate ID: " + (s.size() - s2.size())  + "\t "
+                + "Total Duplicate Name: " + (s.size() - s3.size()) + "\t " 
+                + "Total Duplicate IC: " + (s.size() - s4.size()) );
+        scanner.nextLine();
 
     }
 
@@ -228,3 +199,11 @@ public class Duplicate {
     }
 
 }
+//set.add(new Student("19001", "Lim", "Yi En", "990102"));
+//        set.add(new Student("19001", "Lim", "Yi En", "990122"));
+//        set.add(new Student("19001", "Lim", "Yi En", "990102"));
+//        set.add(new Student("19001", "Lim", "Yi En", "990102"));
+//        set.add(new Student("19001", "Lim", "Yi En", "990102"));
+//        set.add(new Student("19001", "Tan", "Yi En", "990102"));
+//        set.add(new Student("19001", "Liew", "Yi En", "990102"));
+//        set.add(new Student("11001", "Liew", "Yi En", "990102"));

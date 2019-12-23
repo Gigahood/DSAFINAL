@@ -90,6 +90,30 @@ public interface Set<T> {
     Postcondition: 
     Return: null
     */
+
+    public Set checkUniqueID();
+    /*
+    Description: 
+    Precondition: 
+    Postcondition: 
+    Return: null
+    */
+    
+    public Set checkUniqueName();
+    /*
+    Description: 
+    Precondition: 
+    Postcondition: 
+    Return: null
+    */
+    
+    public Set checkUniqueIC();
+    /*
+    Description: 
+    Precondition: 
+    Postcondition: 
+    Return: null
+    */
     
     public Set searchID(String id);
     /*
