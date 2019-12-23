@@ -78,7 +78,7 @@ public class MyLinkedList<T extends Comparable<T>> implements SortedListADT<T> {
         Node previous = newNode;
         boolean found = false;
         while (current != null) {
-            if (anEntry.compareTo(anEntry) == 0) {
+            if (current.data.compareTo(anEntry) == 0) {
                 previous.next = current.next;
                 current.next = null;
                 found = true;

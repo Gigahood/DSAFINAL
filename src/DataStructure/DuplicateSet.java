@@ -64,12 +64,10 @@ public class DuplicateSet<T> implements Set<T> {
         return -1; // If no duplicate value return null.
     }
     
-    public boolean checkDuplicateValue(String item) {
-        for (int i = 0; i < size; i++) {
-            if (array[i].value.equals(item)) {
-                return true; //The index of the duplicate value
-            }
-        }
+    public boolean checkDuplicateValue() {
+        if (this.size > 1 || array[0].count > 1) {
+            return true;
+        } 
         return false; // If no duplicate value return null.
     }
     

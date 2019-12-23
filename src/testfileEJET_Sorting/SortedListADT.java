@@ -20,6 +20,14 @@ public interface SortedListADT<T> {
     Return :  none
     */
     
+    public void reverseSort(T data);
+    /*
+    Description : to add data in descending order
+    Precondition :  the data is not null
+    Postcondition : the data is added to the list
+    Return :  none
+    */
+    
     public boolean remove(T anEntry);
 
     /*

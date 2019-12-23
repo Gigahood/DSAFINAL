@@ -28,12 +28,13 @@ public interface Set<T> {
             Return true if the set has duplicated item.
     */
     
-    public boolean checkDuplicateValue(String item);
+    public boolean checkDuplicateValue();
     /*
-    Description: To check if the item already exists in the set.
-    Precondition: Check the duplicate value
+    Description: To check whether the set has duplicated item
+    Precondition: null
     Postcondition: null
-    Return: If no duplicate return -1, if has duplicate return the index of the duplicate item.
+    Return: Return false if the set has distinct item
+            Return true if the set has duplicated item.
     */
     
     public Set getDuplicate();
