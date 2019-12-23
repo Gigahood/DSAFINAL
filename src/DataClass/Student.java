@@ -24,7 +24,14 @@ public class Student implements Comparable<Student> {
         this.cgppa = cgppa;
         this.password = password;
     }
-
+    
+    public Student(String studentID, String firstName, String lastName, String ic) {
+        this.studentID = studentID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.ic = ic;
+    }
+    
     public String getPassword() {
         return password;
     }
@@ -79,13 +86,16 @@ public class Student implements Comparable<Student> {
     public String toString() {
         String str = "";
 
-        str += String.format("%-15s %-10s %-15s %-15s %-20s %-5s",
-                this.studentID, this.firstName,
+        str += String.format("%-15s %-5s %-15s %-15s %-20s %-5s", 
+                this.studentID, this.firstName, 
                 this.lastName, this.ic, this.password, this.cgppa);
 
         return str;
     }
-
+    
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -121,6 +131,24 @@ public class Student implements Comparable<Student> {
         if (!Objects.equals(this.ic, other.ic)) {
             return false;
         }
+        return true;
+    }
+    
+     public boolean equalID(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Student other = (Student) obj;
+        if (!Objects.equals(this.studentID, other.studentID)) {
+            return false;
+        }
+  
         return true;
     }
 

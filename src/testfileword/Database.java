@@ -34,7 +34,12 @@ public class Database {
 //        load10000StudentData();
 //        System.out.println(studentArrayList.size());
 //        load100000StudentData();
+
 //        System.out.println(studentArrayList.size());
+//        load200000dStudentData();
+
+//        System.out.println(studentArrayList.size());
+//        
 //        load200000dStudentData();
 //        System.out.println(studentArrayList.size());
 //        load100000sStudentData();

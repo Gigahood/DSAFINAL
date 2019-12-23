@@ -2,6 +2,7 @@ package testfileword;
 
 import Constant.ConsoleColors;
 import java.util.Scanner;
+import testfileword.Yien.Duplicate;
 import testfileEJET_Sorting.Sorting;
 import testfileword.YongBoon.Indexing;
 import testfileword.YongBoon.StudentIDHash;
@@ -95,6 +96,11 @@ public class Main {
                     index.start();
                     break;
                 case "2":
+                    clearScreen();
+                            
+                    Duplicate set = new Duplicate();
+                    set.printList();
+                    
                     break;
                 case "3":
                     Sorting sort = new Sorting();
