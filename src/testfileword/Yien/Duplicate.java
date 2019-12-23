@@ -75,9 +75,11 @@ public class Duplicate {
             s.add(db.studentArrayList.get(i));
 
         }
-
         
         s2 = s.checkUniqueID();
+        
+        System.out.println( s.checkUniqueName());
+        
         s3 = s.checkUniqueName();
         s4 = s.checkUniqueIC();
         

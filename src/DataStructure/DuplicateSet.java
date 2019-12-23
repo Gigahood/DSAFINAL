@@ -130,7 +130,7 @@ public class DuplicateSet<T> implements Set<T> {
             } 
             else {
                 Node ad = (Node) icSet.getNode(checkDuplicateID(s.getIc(), icSet));      
-                ad.count++;
+//                ad.count++;
             }
         }
 
@@ -161,7 +161,7 @@ public class DuplicateSet<T> implements Set<T> {
             } 
             else {
                 Node ad = (Node) nameSet.getNode(checkDuplicateID(s.getIc(), nameSet));      
-                ad.count++;
+//                ad.count++;
             }
         }
 
