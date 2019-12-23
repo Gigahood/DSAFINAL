@@ -4,6 +4,7 @@ import Constant.ConsoleColors;
 import java.util.Scanner;
 import testfileword.Yien.Duplicate;
 import testfileEJET_Sorting.Sorting;
+import static testfileword.Yien.Duplicate.db;
 import testfileword.YongBoon.Indexing;
 import testfileword.YongBoon.StudentIDHash;
 
@@ -12,6 +13,7 @@ public class Main {
     public static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
+        db.loadData();
         start();
 
 //        WriteFile wf = new WriteFile();
@@ -99,6 +101,7 @@ public class Main {
                     clearScreen();
                             
                     Duplicate set = new Duplicate();
+                    
                     set.printList();
                     
                     break;

@@ -24,7 +24,7 @@ public class Duplicate {
     public static Scanner scanner = new Scanner(System.in);
 
     public void printList() {
-        db.loadData();
+       // db.loadData();
         System.out.println("Duplicate Check Session");
         System.out.println("1. Overall Result");
         System.out.println("2. SearchID");
