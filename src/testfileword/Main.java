@@ -32,21 +32,21 @@ public class Main {
                 menuUI();
 
                 input = scan.nextLine();
-                if (checkInputMenu(3, input)) {
+                if (checkInputMenu(2, input)) {
                     break;
                 }
             } // Menu UI End
 
-            if (input.equals("3")) {
+            if (input.equals("2")) {
                 break;
             } // end the program
 
             switch (input) {
+//                case "1":
+////                    WriteFile wf = new WriteFile();
+////                    wf.start();
+              //      break; // Go to Write File
                 case "1":
-//                    WriteFile wf = new WriteFile();
-//                    wf.start();
-                    break; // Go to Write File
-                case "2":
                     readFile();
                     break; // Go to Read File
             }
@@ -55,8 +55,8 @@ public class Main {
 
     private static void menuUI() {
         System.out.println("1. Enter Data To File");
-        System.out.println("2. Read Data From File");
-        System.out.println("3. Exit");
+        //System.out.println("2. Read Data From File");
+        System.out.println("2. Exit");
         System.out.println("");
         System.out.print("Your Selection --> ");
     }
@@ -67,8 +67,8 @@ public class Main {
         System.out.println("1. Yong Boon --> Indexing");
         System.out.println("2. Yi En --> Duplicate");
         System.out.println("3. E Jet --> Sorting");
-        System.out.println("4. Man Quan --> ");
-        System.out.println("5. Return");
+//        System.out.println("4. Man Quan --> ");
+        System.out.println("4. Return");
         System.out.println("");
         System.out.print("Your Selection --> ");
     }
@@ -81,12 +81,12 @@ public class Main {
                 readFileUI();
 
                 input = scan.nextLine();
-                if (checkInputMenu(5, input)) {
+                if (checkInputMenu(4, input)) {
                     break;
                 }
             }// end Selection UI
 
-            if (input.equals("5")) {
+            if (input.equals("4")) {
                 break;
             }
 
@@ -106,8 +106,8 @@ public class Main {
                     Sorting sort = new Sorting();
                     sort.start();
                     break;
-                case "4":
-                    break;
+//                case "4":
+//                    break;
             }
         }
     }

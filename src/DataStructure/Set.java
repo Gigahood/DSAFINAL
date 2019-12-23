@@ -19,12 +19,13 @@ public interface Set<T> {
     Return: null
     */
     
-    public boolean hasDuplicate(String item);
+    public boolean hasDuplicate();
     /*
-    Description: To check the duplicate item.
+    Description: To check if the set has duplicated item
     Precondition: null
     Postcondition: null
-    Return: If has duplicate item in the  .
+    Return: Return false if the set has distinct item
+            Return true if the set has duplicated item.
     */
     
     public boolean checkDuplicateValue(String item);
@@ -37,16 +38,16 @@ public interface Set<T> {
     
     public Set getDuplicate();
     /*
-    Description: To get the duplicate item from the set.
-    Precondition: The item is not null and check the item had doesn't exist in the set. 
-    Postcondition: case1) If the item does not exist in the list, size increase and item being added into the list
-                   case2) If the item exist in the list, add into duplicated item array.
-    Return: Return true if the item i
+    Description: To get the duplicate items from the set.
+    Precondition: None
+    Postcondition: None
+    Return: Return a new Set of consist of duplicate item from the current set
+            Return null if there is no duplicated item in the set
     */
 
     public T get(int index);
     /*
-    Description: To get item in the index.
+    Description: To get item based on the index.
     Precondition: Check the index must be smaller or equal the size.
     Postcondition: null
     Return: The item.
@@ -54,16 +55,19 @@ public interface Set<T> {
     
     public T get(String item);
      /*
-    Description: To get the item.
-    Precondition: Check the item is exist.
-    Postcondition: null
-    Return: The item.
+    Description: To get the item based on the given String value
+    Precondition: NOne
+    Postcondition: None
+    Return: Return the item based on the given String value.
+            Return null if the String value does not exist in the set.
+
     */
     
      public int remove(T item);
     /*
     Description: To remove an item from set.
-    Precondition: The item is exist in set.
+    Precondition: The set is not empty
+                  The item is not null
     Postcondition: The item had been removed, size decreased.
     Return: If exists, return the index of the item, else return -1. 
     */
@@ -73,69 +77,27 @@ public interface Set<T> {
     Description: To check the size of the set.
     Precondition: null
     Postcondition: null
-    Return: The size
+    Return: Return the sie of the set.
     */
     public boolean clear();
     /*
-    Description: To check the set is empty or not.
+    Description: To empty the set.
     Precondition: null
-    Postcondition: null
-    Return: If is empty return true, else return false.
+    Postcondition: Size = 0
+                   All item being removed from the set.
+    Return: Return true if able to clear
+            Return false if unable to clear
     */
     
     public void add(T item, int count);
     /*
-    Description: 
-    Precondition: 
-    Postcondition: 
+    Description: To add the item and the number of repeat into the set.
+    Precondition: The item is not null
+    Postcondition: If the item existed in the set, add the count to the item count
+                    Else add a new item and count the set
+
     Return: null
     */
 
-    public Set checkUniqueID();
-    /*
-    Description: 
-    Precondition: 
-    Postcondition: 
-    Return: null
-    */
-    
-    public Set checkUniqueName();
-    /*
-    Description: 
-    Precondition: 
-    Postcondition: 
-    Return: null
-    */
-    
-    public Set checkUniqueIC();
-    /*
-    Description: 
-    Precondition: 
-    Postcondition: 
-    Return: null
-    */
-    
-    public Set searchID(String id);
-    /*
-    Description: To search the specific id in the set.
-    Precondition: The id is exist in the set. 
-    Postcondition: null
-    Return: The student details with the specific id.
-    */
-    
-    public Set searchIC(String ic); 
-    /*
-    Description: To search the specific ic in the set.
-    Precondition: The ic is exist in the set. 
-    Postcondition: null
-    Return: The student details with the specific ic.
-    */
-    
-    public Set searchName(String fname, String lname);
-    /*
-    Description: To search the specific ic in the set.
-    Precondition: The ic is exist in the set. 
-    Postcondition: null
-    Return: The student details with the specific ic.
-    */
+
 }

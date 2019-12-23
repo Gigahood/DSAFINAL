@@ -208,7 +208,7 @@ public class StudentIDHash {
 
             System.out.println("Press other To back");
             String input = Main.scan.nextLine();
-
+            break;
         }
     }
 

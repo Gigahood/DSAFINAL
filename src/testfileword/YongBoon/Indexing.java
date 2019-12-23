@@ -20,12 +20,12 @@ public class Indexing {
                  MenuUI();
                  input = Main.scan.nextLine();
                  
-                 if (Main.checkInputMenu(3, input)) {
+                 if (Main.checkInputMenu(2, input)) {
                      break;
                  }
   
             }// end Menu Loop
-            if (input.equals("3")) {
+            if (input.equals("2")) {
                 break;
             }
             
@@ -34,10 +34,10 @@ public class Indexing {
                     StudentIDHash as = new StudentIDHash();
                     as.start();
                     break;
-                case "2":
-                    RegistrationIDHash rs = new RegistrationIDHash();
-                    rs.start();
-                    break;
+//                case "2":
+//                    RegistrationIDHash rs = new RegistrationIDHash();
+//                    rs.start();
+//                    break;
             }
             
         }// End Module Loop
@@ -48,8 +48,8 @@ public class Indexing {
     private void MenuUI() {
         System.out.println("Select Following Action : ");
         System.out.println("1. Student ID");
-        System.out.println("2. Registration ID");
-        System.out.println("3. Return");
+       // System.out.println("2. Registration ID");
+        System.out.println("2. Return");
         System.out.println("");
         System.out.print("Your Selection --> ");
     }

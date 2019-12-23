@@ -21,17 +21,17 @@ public interface MyList<T> {
  */
     void add(T obj);
     
-    //add a new Object to the list at the given position, if fail return
-    // false, if true return true
-    /*
-        Description   : Add a new Object at the index position
-        Precondition  : Index should be less than size of the list
-        Postcondition : Size increase
-                        An item being added to the index of the item
-        Return        : True if can add
-                        False if fail to add
-    */
-    boolean add(int index, T o);
+//    //add a new Object to the list at the given position, if fail return
+//    // false, if true return true
+//    /*
+//        Description   : Add a new Object at the index position
+//        Precondition  : Index should be less than size of the list
+//        Postcondition : Size increase
+//                        An item being added to the index of the item
+//        Return        : True if can add
+//                        False if fail to add
+//    */
+//    boolean add(int index, T o);
     
     // return the current amount of elements inside the list
     /*

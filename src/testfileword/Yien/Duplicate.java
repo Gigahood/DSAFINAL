@@ -149,7 +149,7 @@ public class Duplicate {
 
        
 
-        Set<Student> s = new DuplicateSet<Student>();
+        DuplicateSet<Student> s = new DuplicateSet<Student>();
 
         for (int i = 0; i < db.studentArrayList.size(); i++) {
             s.add(db.studentArrayList.get(i));
@@ -170,7 +170,7 @@ public class Duplicate {
     }
 
     public void searchName() {
-        Set<Student> set = new DuplicateSet<Student>();
+        DuplicateSet<Student> set = new DuplicateSet<Student>();
 
         System.out.println("***************** Search Duplicate Name ********************");
         System.out.print("Key in First Name : ");
@@ -184,7 +184,7 @@ public class Duplicate {
     }
 
     public void searchIC() {
-        Set<Student> set = new DuplicateSet<Student>();
+        DuplicateSet<Student> set = new DuplicateSet<Student>();
 
         System.out.println("***************** Search Duplicate IC ********************");
         System.out.print("Key in IC : ");

@@ -43,7 +43,7 @@ public class DuplicateSet<T> implements Set<T> {
         }
     }
 
-    public boolean hasDuplicate(String item) {
+    public boolean hasDuplicate() {
 
         for (int i = 0; i < size; i++) {
             if (array[i].count > 0) {
@@ -63,6 +63,7 @@ public class DuplicateSet<T> implements Set<T> {
         }
         return -1; // If no duplicate value return null.
     }
+    
     public boolean checkDuplicateValue(String item) {
         for (int i = 0; i < size; i++) {
             if (array[i].value.equals(item)) {

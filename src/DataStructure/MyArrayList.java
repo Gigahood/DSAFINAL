@@ -33,14 +33,14 @@ public class MyArrayList<T> implements MyList<T> {
         }
     }
 
-    @Override
-    public boolean add(int index, T o) {
-//       checkArraySize(index);
-//       moveBackward((count - 1), index, data);
-//       data[index] = o;
-//       count++;
-        return false;
-    }
+//    @Override
+//    public boolean add(int index, T o) {
+////       checkArraySize(index);
+////       moveBackward((count - 1), index, data);
+////       data[index] = o;
+////       count++;
+//        return false;
+//    }
 
     @Override
     public boolean contains(T o) {
