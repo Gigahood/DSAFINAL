@@ -48,6 +48,30 @@ public class MyLinkedList<T extends Comparable<T>> implements SortedListADT<T> {
 
     }
 
+    public void reverseSort(T data) {
+        Node newNode = new Node(data);
+        if (data != null) {
+            if (firstNode == null) {
+                firstNode = newNode;
+            } else if (data.compareTo(firstNode.data) > 0) {
+                newNode.next = firstNode;
+                firstNode = newNode;
+            } else {
+                Node current = firstNode;
+                Node previous = null;
+                while (current != null && data.compareTo(current.data) < 0) {
+                    previous = current;
+                    current = current.next;
+                }
+                previous.next = newNode;
+                newNode.next = current;
+            }
+            listSize++;
+        } else {
+            System.out.println("The data entry should not be empty.");
+        }
+    }
+
     public boolean remove(T anEntry) {
         Node newNode = new Node(anEntry);
         Node current = firstNode;

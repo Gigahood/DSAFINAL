@@ -93,7 +93,7 @@ public interface SortedListADT<T> {
     /*
         Description	:	Determines whether the list is full.
         Postcondition	:	The list remains unchanged.
-        Returns	:	true if the list is full, or false if not.
+        Returns	:	false as the list will not be full
 
      */
 

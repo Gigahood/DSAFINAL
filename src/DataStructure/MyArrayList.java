@@ -181,7 +181,7 @@ public class MyArrayList<T> implements MyList<T> {
     public String sortStudID() {
 
         String str = "";
-        str += "\nThe records is too long, first 20 records are shown instead";
+        str += "\nThe records is too long, first 20 records are shown instead\n";
         str += String.format("%-5s %-15s %-10s %-15s %-15s %-20s %-5s \n",
                 "No", "StudentId", "FirstName",
                 "LastName", "IC", "Password", "CGPA");
